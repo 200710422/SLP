@@ -88,15 +88,15 @@ include('config/dbcon.php');
                             if(isset($_GET['school_year']) && isset($_GET['college_id']) && isset($_GET['department_id'])){
                                 $query4 = "SELECT * FROM projects where school_year_id = $_GET[school_year] AND college_id = $_GET[college_id] AND department_id = $_GET[department_id]";
                                 $query4_run = mysqli_query($con, $query4);
-                                if (mysqli_num_rows($query4_run) > 0){
-                                foreach($query4_run as $item) {
-                                    ?>
-                                    <div class="col-md-4 mb-4">
-                                        <div class="card h-100">
-                                            <div class="card-body">
-                                                <?php
-                                                $project = $item['id'];
-                                                ?>
+                    if (mysqli_num_rows($query4_run) > 0) {
+                        foreach ($query4_run as $item) {
+                        ?>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <?php
+                                        $project = $item['id'];
+                                        ?>
                                                 <a href="project-details.php?id=<?=$item['id']?>">
                                                     <h5 class="card-title"><?= $item['name']; ?></h5>
                                                     <p class="card-text"><?= $project; ?></p>
@@ -106,19 +106,20 @@ include('config/dbcon.php');
                                     </div>
                                     <?php
                             }
-                            
-                           
-                        } else {echo '<a style="color:white">No Records Found</a>';}
+                    } else {
+                        echo '<a style="color:white">No Records Found</a>';
                     }
-                
-                        ?>
-                    </div>
-            </div>
-                </div>
+                }
+
+                ?>
             </div>
         </div>
     </div>
 </div>
-                </body>
+</div>
+</div>
+</div>
+
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>
+
